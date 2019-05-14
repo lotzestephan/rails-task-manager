@@ -1,0 +1,30 @@
+<div class="banner">
+  <div class="container mt-3">
+    <div class="adjust-width">
+      <div class="row justify-content-left mb-3">
+        <h1>
+          My tasks
+        </h1>
+      </div>
+      <% @tasks.each do |task| %>
+        <div class="row justify-content-left">
+            <% if task.completed == true then %>
+                <i class="far fa-check-circle mr-2"></i>
+              <% end %>
+              <% if task.completed == false then %>
+                <i class="far fa-circle mr-2"></i>
+              <% end %>
+            <div class="flex-grow-1">
+              <%= link_to task.title, task_path(task) %>
+            </div>
+            <%= link_to delete_task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="ml-2 fas fa-trash-alt"></i>
+            <% end %>
+        </div>
+      <% end %>
+      <div class="row justify-content-left mt-3">
+        <%= link_to "Add new task", new_task_path %>
+      </div>
+    </div>
+  </div>
+</div>

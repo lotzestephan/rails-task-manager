@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="adjust-width">
+    <h1 class="challenge-headline"><%= @task.title %></h1>
+    <p><%= @task.details %></p>
+    <div class="mb-4">
+      <% if @task.completed == true then %>
+        <i class="far fa-check-circle mr-2"></i> completed
+      <% end %>
+      <% if @task.completed == false then %>
+        <i class="far fa-circle mr-2"></i> pending
+      <% end %>
+    </div>
+    <div class="d-flex">
+      <%= link_to "Edit", edit_task_path, class: "btn btn-primary flex-grow-1 mr-1" %>
+      <%= link_to "Back", tasks_path, class: "btn btn-primary flex-grow-1 mr-1" %>
+      <%= link_to "Delete", delete_task_path(@task),  method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary flex-grow-1" %>
+    </div>
+  </div>
+</div>
